@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/stylesheet/style2.css">
+</head>
+<body>
+    <div class="profile">
+        <img src="<%="./images/"+user.profileimage%>">
+        <h2><%=user.username%></h2>
+        <p><%=user.email%></p>
+    </div>
+    <div class="profileimage">
+        <form action="/profileupload" method="post" enctype="multipart/form-data">
+            <label for="profile pic">Upload profile image :</label>
+            <input type="file" name="profileimage">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+    <div class="createpost">
+        <h2>Create a post here</h2>
+        <form action="/post" method="post" enctype="multipart/form-data">
+            <label for="image">Upload image :</label>
+            <input type="file" name="postimage">
+            <textarea name="content"> Write what is in your mind</textarea>
+            <input type="submit" value="Post">
+        </form>
+    </div>
+    <div class="allpost">
+        <% allposts.reverse().forEach((element)=>{%>
+           <div class="post">
+                <h4>@<%= element.user.username %></h4>
+                <% if(element.image) {%>
+                    <img src=<%="./images/"+element.image%>>
+                <% } %>
+                <p><%= element.content %></p>
+                <a href="/like/<%= element._id %>">
+                    <%= (element.likes.indexOf(user._id)===-1)?"🤍":"❤️" %>
+                    <%= element.likes.length %>
+                </a>
+           </div>
+        <%})%>
+    </div>
+    <div class="mypost">
+        <div class="searchbox">
+            <a href="/logout">Logout</a>
+        </div>
+        <h2><%= (user.posts.length>0)?"These are your posts:-":"You have made no post yet" %></h2>
+        <% user.posts.forEach((element)=>{ %>
+            <div class="post">
+                <h4>@<%= user.username %></h4>
+                <% if(element.image) {%>
+                    <img src=<%="./images/"+element.image %>>
+                <% } %>
+                <p><%= element.content %></p>
+                <a href="/like/<%= element._id %>">
+                    <%= (element.likes.indexOf(user._id)===-1)?"🤍":"❤️"%>
+                    <%= element.likes.length %>
+                </a>
+                <a href="/edit/<%=element._id %>">✏️</a>
+                <a href="/delete/<%=element._id%>">🗑</a>
+           </div>
+       <% }) %>
+    </div>
+</body>
+</html>
