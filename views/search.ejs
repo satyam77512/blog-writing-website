@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/stylesheet/style7.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>inkWell</h1>
+
+        <a href="/home">Home</a>
+        <a href="/create">create</a>
+        <a href="/mypost">myposts</a>
+        <a href="/profile">profile</a>
+        <a href="/search">search</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="form">
+        <form action="/find" method="post">
+            <input type="text" name="email" placeholder="🔍search">
+            <input type="submit" value="search">
+        </form>
+    </div>
+    <% if(founduser!=null){ %>
+    <div class="result">
+        <h1><%=founduser.username%>👋</h1>
+        <img src="/images/<%=founduser.profileimage%>" alt="">
+        <p><%=founduser.email%></p>
+        <h2><%= (founduser.posts.length > 0)?"":"No post yet" %></h2>
+        <% founduser.posts.forEach((element)=>{ %>
+            <div class="post">
+                <h4>@<%= founduser.username %></h4>
+                <% if(element.image) {%>
+                    <img src=<%="./images/"+element.image %>>
+                <% } %>
+                <p><%= element.content %></p>
+                <a href="/like/<%= element._id %>">
+                    <%= (element.likes.indexOf(user._id)===-1)?"🤍":"❤️"%>
+                    <%= element.likes.length %>
+                </a>
+           </div>
+       <% }) %>
+    </div>
+    <% } else{%>
+        <div class="result">
+            <h2>cannot find the account</h2>
+        </div>
+        <% } %>
+</body>
+</html>
+

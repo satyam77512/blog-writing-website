@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="stylesheet" href="/stylesheet/style4.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>inkWell</h1>
+
+        <a href="/home">Home</a>
+        <a href="/create">create</a>
+        <a href="/mypost">myposts</a>
+        <a href="/profile">profile</a>
+        <a href="/search">search</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="heading">
+        <h1>Create your post here</h1>
+    </div>
+    <div class="createpost">
+        <form action="/post" method="post" enctype="multipart/form-data">
+            <div class="filechoose">
+                <label for="">Upload image :  </label>
+                <input type="file" name="postimage">
+            </div>
+            <textarea name="content">
+            </textarea>
+            <input type="submit" value="post">
+        </form>
+    </div>
+</body>
+</html>
+

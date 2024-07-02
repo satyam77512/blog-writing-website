@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheet/style5.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>inkWell</h1>
+
+        <a href="/home">Home</a>
+        <a href="/create">create</a>
+        <a href="/mypost">myposts</a>
+        <a href="/profile">profile</a>
+        <a href="/search">search</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="mypost">
+        <h2><%= (user.posts.length > 0)?"These are your posts:-":"You have made no post yet" %></h2>
+        <% user.posts.forEach((element)=>{ %>
+            <div class="post">
+                <h4>@<%= user.username %></h4>
+                <% if(element.image) {%>
+                    <img src=<%="./images/"+element.image %>>
+                <% } %>
+                <p><%= element.content %></p>
+                <a href="/like/<%= element._id %>">
+                    <%= (element.likes.indexOf(user._id)===-1)?"🤍":"❤️"%>
+                    <%= element.likes.length %>
+                </a>
+                <a href="/edit/<%=element._id %>">✏️</a>
+                <a href="/delete/<%=element._id%>">🗑</a>
+           </div>
+       <% }) %>
+    </div>
+</body>
+</html>

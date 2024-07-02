@@ -1,0 +1,70 @@
+body{
+    background-color: black;
+    color: aqua;
+    margin-left:20px;
+}
+.navbar{
+    height: 100%;
+    width: 20%;
+    padding-left: 20px;
+    h1{
+        font-family:cursive;
+        margin-top: 30px;
+        margin-bottom: 80px;
+    }
+    a{
+        display: block;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: aqua;
+        text-decoration: none;
+        font-size: 20px;
+        margin-bottom:20px;
+        border: 2px solid blue;
+        width: 100px;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    a:hover{
+        background-color: aqua;
+        color: black;
+        font-size: 25px;
+    }
+}
+form textarea{
+    background-color: rgb(44, 44, 44);
+    margin-bottom:10px;
+    width: 300px;
+    height: 100px;
+    border: none;
+    border-radius: 2%;
+    padding: 10px;
+    color: aliceblue;
+    display: block;
+}
+form input
+{
+    background-color: #7E30E1;
+    font-size: 15px;
+    padding:5px;
+}
+.form{
+    position: absolute;
+    top: 30px;
+    left: 20%;
+    img{
+        display: block;
+        margin-left: 0px;
+        margin-right: auto;
+        max-width : 300px;
+        height:auto;
+        object-fit: contain;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 2px solid purple;
+    }
+    h1{
+        color: aqua;
+        text-align: center;
+    }
+}
